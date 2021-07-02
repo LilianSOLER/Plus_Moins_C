@@ -5,7 +5,7 @@
 int main() {
     srand(time(NULL));
     const int MIN = 1, MAX = 100;
-    int nombreMystere = (rand() % (MAX - MIN + 1)) + MIN,nombrePropose = 0;
+    int nombreMystere = (rand() % (MAX - MIN + 1)) + MIN,nombrePropose = 0, essais = 0;
 
     printf("Bienvenu sur le jeu du plus ou moins.\n"
                "Vous devez devinez un nombre compris entre %d et %d\n\n",MIN,MAX);
@@ -22,7 +22,8 @@ int main() {
         {
             printf("C'est moins !\n\n");
         }
+        essais++;
     }
-    printf("Bravo vous avez gagnez, le nombre était bien %d \n\n", nombreMystere);
+    printf("Bravo vous avez gagnez en %d coup, le nombre était bien %d \n\n", essais, nombreMystere);
     return 0;
 }
