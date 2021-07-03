@@ -8,26 +8,49 @@ int main() {
     while(continuerPartie == 1)
     {
         const int MIN = 1;
-        int nombreMystere = 0,nombrePropose = 0, essais = 0,MAX = 100,difficulte = 1;
+        int MAX = 100,nombreMystere = 0,nombrePropose = 0,essais = 0,difficulte = 1,nombreJoueur = 1;
 
-        printf("Choississez vôtre difficulté : (1 ou 2 ou 3 ) //le niveau par défaut est le 1\n\n");
-        scanf("%d",&difficulte);
-        switch (difficulte)
+        printf("Choississez la version du jeu : (2 pour jouer à deux et n'importe quel autre chiffre pour jouer seul)\n\n");
+        scanf("%d",&nombreJoueur);
+
+        if(nombreJoueur == 2)
         {
-            case 2:
-                MAX = 1000;
-                printf("\nD'accord, vous avez choisit le niveau 2\n\n");
-                break;
-            case 3:
-                printf("\nOh, vous avez choisit le niveau 3\n\n");
-                MAX = 10000;
-                break;
-            default:
-                printf("\nParfait, vous avez choisit le niveau 1\n\n");
-                break;
+            int nombreJoueurValide = 0;
+            while(nombreJoueurValide == 0)
+            {
+                printf("Choisit le nombre entre 1 et 100 : \n\n");
+                scanf("%d",&nombreMystere);
+                if(nombreMystere<100 & nombreMystere>0)
+                {
+                    printf("Très bon choix\n\n");
+                    nombreJoueurValide = 1;
+                }
+                else
+                {
+                    printf("Tu dois choisir un nombre entre 1 et 100 !!\n\n");
+                }
+            }
         }
-        nombreMystere = (rand() % (MAX - MIN + 1)) + MIN;
-
+        else
+        {
+            printf("Choississez vôtre difficulté : (1 ou 2 ou 3 ) //le niveau par défaut est le 1\n\n");
+            scanf("%d",&difficulte);
+            switch (difficulte)
+            {
+                case 2:
+                    MAX = 1000;
+                    printf("D'accord, vous avez choisit le niveau 2\n\n");
+                    break;
+                case 3:
+                    printf("Oh, vous avez choisit le niveau 3\n\n");
+                    MAX = 10000;
+                    break;
+                default:
+                    printf("Parfait, vous avez choisit le niveau 1\n\n");
+                    break;
+            }
+            nombreMystere = (rand() % (MAX - MIN + 1)) + MIN;
+        }
         printf("Bienvenu sur le jeu du plus ou moins.\n"
                "Vous devez devinez un nombre compris entre %d et %d\n\n",MIN,MAX);
 
