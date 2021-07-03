@@ -4,14 +4,32 @@
 
 int main() {
     srand(time(NULL));
-    const int MIN = 1, MAX = 100;
     int continuerPartie = 1;
     while(continuerPartie == 1)
     {
-        int nombreMystere = (rand() % (MAX - MIN + 1)) + MIN,nombrePropose = 0, essais = 0;
+        const int MIN = 1;
+        int nombreMystere = 0,nombrePropose = 0, essais = 0,MAX = 100,difficulte = 1;
+
+        printf("Choississez vôtre difficulté : (1 ou 2 ou 3 ) //le niveau par défaut est le 1\n\n");
+        scanf("%d",&difficulte);
+        switch (difficulte)
+        {
+            case 2:
+                MAX = 1000;
+                printf("\nD'accord, vous avez choisit le niveau 2\n\n");
+                break;
+            case 3:
+                printf("\nOh, vous avez choisit le niveau 3\n\n");
+                MAX = 10000;
+                break;
+            default:
+                printf("\nParfait, vous avez choisit le niveau 1\n\n");
+                break;
+        }
+        nombreMystere = (rand() % (MAX - MIN + 1)) + MIN;
 
         printf("Bienvenu sur le jeu du plus ou moins.\n"
-               "Vous devez devinez un nombre compris entre %d et %d\n\n", MIN, MAX);
+               "Vous devez devinez un nombre compris entre %d et %d\n\n",MIN,MAX);
 
         while (nombreMystere != nombrePropose) {
             printf("Quel est le nombre ?\n");
